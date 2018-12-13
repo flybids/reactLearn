@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script src="./node_modules/babel-standalone/babel.min.js"></script>
+    <script>
+        const es6 = `
+         let {} = {
+             name :'tom',
+             age:21
+         }
+        `
+        console.log(es6)
+        // const es5 = Babel.transform(es6,{presets:['es2015']}) //手动转换es6
+    </script>
+    <script type="text/babel">
+     //自动转换
+     let play =()=>{
+         console.log('hi')
+     }
+    </script>
+</body>
+</html>
