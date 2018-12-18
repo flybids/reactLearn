@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>无状态组件</title>
+</head>
+<body>
+    <div id="app"></div>
+    <script src='../node_modules/babel-standalone/babel.min.js'></script>
+    <script src='../node_modules/react/umd/react.development.js'></script>
+    <script src="../node_modules/react-dom/umd/react-dom.development.js"></script>
+    <script type="text/babel">
+     let app = document.querySelector('#app')
+     
+    
+    //  let ele = (
+    //     <div>严格来说，这只是一个变量,没有状态</div>
+    //  )
+     //区分是否是组件，看当前组件是否有状态或无状态
+     //状态 = 驱动视图的响应式数据， 这些数据通常放在 state 里面，state ={arr:[],title:''}
+     //由于页面很多，不同页面之间的数据常常会互相关联，此时就需要一个js库，去进行管理，保证不同页面的数据始终是最新的
+     // 比如 redux
+     // by react-redux use redus to manager data...
+
+    let str = 'dream'
+    let ele =(
+        <div>{str}</div>
+    )
+    ReactDOM.render(
+        ele,
+        app
+    )
+    </script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>事件处理</title>
+</head>
+<body>
+    <div id="app"></div>
+    <script src='../node_modules/babel-standalone/babel.min.js'></script>
+    <script src='../node_modules/react/umd/react.development.js'></script>
+    <script src="../node_modules/react-dom/umd/react-dom.development.js"></script>
+    <script type="text/babel">
+     let app = document.querySelector('#app')
+     let handleClick =(data,e)=>{
+         //console.log(data,eventObj===undefined)
+         e===undefined?console.log('事件函数'):console.log('传参',data,e.target)
+     }
+    
+     let ele = (
+         <div>
+          <h1>事件处理</h1>
+          <input 
+            type ='button' 
+            value='自执行' 
+            onClick ={console.log('这样子写会自执行')}
+          /> 
+          <br/>
+          <input 
+            type ='button' 
+            value='箭头函数' 
+            onClick ={()=>{
+              console.log('箭头函数，不会自执行')
+            }}
+          />
+          <br/>
+          <input 
+            type ='button' 
+            value='事件函数' 
+            onClick ={handleClick}
+          /> 
+          <br/>
+          <input 
+            type ='button' 
+            value='传参' 
+            
+            onClick ={handleClick.bind(this,1216)}
+          />   
+          {
+                //call 自执行
+                //bind 不会自执行
+            }
+        </div>
+     )
+     {  
+         //react 的 ele 中的标签必须是 闭合的
+         //多个属性建议换行写
+         //推荐使用事件函数的写法
+     }
+      ReactDOM.render(
+          ele,
+          app
+      )
+    </script>
+</body>
+</html>

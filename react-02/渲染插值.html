@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>渲染插值</title>
+</head>
+<body>
+    <div id="app"></div>
+    <script src='../node_modules/babel-standalone/babel.min.js'></script>
+    <script src='../node_modules/react/umd/react.development.js'></script>
+    <script src="../node_modules/react-dom/umd/react-dom.development.js"></script>
+    <script type="text/babel">
+    const person = {
+        name:'Tom',
+        age:21,
+        sex:'male'
+    }
+    const arr = ['Tom','Sun','Harl']
+    const styles = {
+        background:'blue',
+        color:'yellow'
+    }
+    const ele = (
+        <div>
+           <h1>Hello,World</h1> 
+           <i>{person.name}：{person.age}</i>
+            {
+               //样式style必须这样子写
+               //或者 style = {{color:'red'}}
+            }
+           <span style = {styles}>{person.sex==='male'?'男':'女'}</span>
+           <ul>
+             {
+                 //jsx 中用{}插入数据
+                // {}中可以是字符串 ，也可以是js代码，函数必须是匿名函数(function(){})()
+                // {字符串数组 会自动展开}
+                 arr.length>0&&arr.map((item,index)=>{
+                     return (<li key={index}>{item}</li>)
+                 })
+             }
+           </ul>
+        </div>
+    )
+       //插入数据
+    ReactDOM.render(ele,document.querySelector('#app'))
+    </script>
+</body>
+</html>

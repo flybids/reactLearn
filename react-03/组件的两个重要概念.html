@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>组件的两个重要概念</title>
+</head>
+<body>
+    <div id="app"></div>
+    <script src='../node_modules/babel-standalone/babel.min.js'></script>
+    <script src='../node_modules/react/umd/react.development.js'></script>
+    <script src="../node_modules/react-dom/umd/react-dom.development.js"></script>
+    <script type="text/babel">
+        let app = document.querySelector('#app')
+        //开发项目最好将 每个部分都拆成组件，实现重用
+
+        function Header(params) {
+            return (
+                <header>头{params.title}</header>
+                )
+        }
+        function Main(){
+            return (<main>身体</main>)
+        }
+        function Footer(){
+            return (<footer>脚</footer>)
+        }
+
+        let str = 'dream'
+        // jsx 的 xml
+        /**
+         * 组件的两个概念
+         * state 状态，负责页面的视图的数据，根据其进行渲染界面
+         * props 属性，可以用来传递
+         * 如本例： title表示属性
+         * */
+        let ele =(
+            <div>
+              <Header 
+                title={'头部数据'}
+                data ={['首页','HTML']}
+              />
+              <Main/>
+              <Footer/>
+            </div>
+        )
+        ReactDOM.render(
+            ele,
+            app
+        )
+    </script>
+</body>
+</html>

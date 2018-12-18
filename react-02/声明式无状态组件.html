@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>声明式无状态组件</title>
+</head>
+<body>
+    <div id="app"></div>
+    <script src='../node_modules/babel-standalone/babel.min.js'></script>
+    <script src='../node_modules/react/umd/react.development.js'></script>
+    <script src="../node_modules/react-dom/umd/react-dom.development.js"></script>
+    <script type="text/babel">
+        let app = document.querySelector('#app')
+        //开发项目最好将 每个部分都拆成组件，实现重用
+
+        // let header =(<header>头</header>)
+
+        // let main = (<main>身体</main>)
+
+        // let footer = (<footer>脚</footer>)
+
+        function Header(params) {
+            return (<header>头</header>)
+        }
+        function Main(){
+            return (<main>身体</main>)
+        }
+        function Footer(){
+            return (<footer>脚</footer>)
+        }
+
+        let str = 'dream'
+        let ele =(
+            <div>
+              <Header/>
+              <Main/>
+              <Footer/>
+            </div>
+        )
+        ReactDOM.render(
+            ele,
+            app
+        )
+    </script>
+</body>
+</html>

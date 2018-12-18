@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>class语法</title>
+</head>
+<body>
+    <script>
+        // function Point(x,y){
+        //     this.x = x
+        //     this.y = y
+        // } 
+        // Point.tips ='测试的类'
+        // Point.prototype.say=function(params){
+        //     console.log(params)
+        // }   
+        // let pointer  = new Point(12,21)
+        // console.log(pointer)
+
+        class Point extends Object{
+            constructor(x,y){
+                super()
+                this.x = x
+                this.y =y
+            }
+            say(params){
+                console.log('====================================');
+                console.log(params);
+                console.log('====================================');
+            }
+        }
+        let pointer = new Point(10,100)
+        pointer.tips='测试'
+        console.log('====================================');
+        console.log(pointer);
+        console.log('====================================');
+    </script>
+</body>
+</html>

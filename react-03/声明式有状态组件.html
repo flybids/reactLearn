@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>声明式有状态组件</title>
+</head>
+<body>
+    <div id="app"></div>
+    <script src='../node_modules/babel-standalone/babel.min.js'></script>
+    <script src='../node_modules/react/umd/react.development.js'></script>
+    <script src="../node_modules/react-dom/umd/react-dom.development.js"></script>
+    <script type="text/babel">
+        let app = document.querySelector('#app')
+        //组件继承React的Component
+        class Header extends React.Component {
+            constructor(){
+                super(...arguments)
+                this.name = 'just a try'
+                this.state = {
+                    //数据是从后端返回的
+                    //数据发生改变，页面也会对应的改变 响应式
+                    abc:this.props.text
+                }
+            }
+            say(){
+                console.log('say something')
+            }
+            handleClick(data,e){
+                
+                //this.state.abc = data 不能这样用，无效
+                this.setState({
+                    abc:data
+                })
+            }
+            /**
+             * 方法二
+             * this.handleClick =this.handleClick.bind(this)
+             * */
+            /**
+             * 方法三
+             * handleClick=()=>{}
+             * */
+            render(){
+                return (
+                    <header onClick = {this.handleClick.bind(this,'点击后的数据')}>{this.state.abc && this.state.abc}</header>
+                )
+            }
+        }
+        
+        let str = 'dream'
+        let ele =(
+            <div>
+              <Header text='传的数据'/>
+            </div>
+        )
+        ReactDOM.render(
+            ele,
+            app
+        )
+        setInterval(() => {
+            
+        }, 2000);
+    </script>
+</body>
+</html>
