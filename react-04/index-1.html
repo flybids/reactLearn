@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>总结：插值</title>
+</head>
+<body>
+    <div id="app"></div>
+    <script src="../node_modules/babel-standalone/babel.min.js"></script>
+    <script src="../node_modules/react/umd/react.development.js"></script>
+    <script src="../node_modules/react-dom/umd/react-dom.development.js"></script>
+    
+    <script type="text/babel">
+        let app = document.getElementById('app')
+        let styles = {
+            container:{
+                color:'red'
+            }
+        }
+        let el = (
+           <div> 
+             <h1>Hello,World</h1>
+             {
+                 [
+                     <h2 key={'123'} className = {(()=>{return 'test'})()}>h2</h2>,
+                     <h3 key={'321'} style = {styles.container}>h3</h3>,
+                     <h4 key={'31'} className ='test'>h4</h4>
+                 ]
+             }
+             <label htmlFor='ipt'>输入</label>
+             <input id= {'ipt'} type='text' autoFocus/><br/>
+            </div>
+        )
+        ReactDOM.render(el,app)
+    </script>
+
+</body>
+</html>

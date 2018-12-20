@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>组件</title>
+</head>
+<body>
+        <div id="app"></div>
+        <script src="../node_modules/babel-standalone/babel.min.js"></script>
+        <script src="../node_modules/react/umd/react.development.js"></script>
+        <script src="../node_modules/react-dom/umd/react-dom.development.js"></script>
+        <script type="text/babel">
+            let app = document.getElementById('app')
+            let styles = {
+                container:{
+                    color:'red'
+                },
+                subTitle:{
+                    background:'hotpink'
+                }
+            }
+            /**
+                组件：state props
+                方便后期独立成一个文件 jsx js
+                复用 
+                每个组件负责一个页面或一个部分
+            */
+            class List extends React.Component{
+                render(){
+                    return(
+                        <ul>
+                            <li>{this.props.abc}</li>
+                            <li>2</li>
+                        </ul>
+                    )
+                }
+            }
+            class Ele extends React.Component{
+                handleClick(e){
+
+                }
+                state={
+                    data:'组件state数据'
+                }
+                render(){
+                    return (
+                <div>
+                   <h1>{this.state.data}</h1>
+                   <List abc={'父组件的数据Props'}/>
+                </div>
+            );
+                }
+            }
+            ReactDOM.render(<Ele/>,app)
+        </script>    
+</body>
+</html>

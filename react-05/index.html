@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app"></div>
+    <script src="../node_modules/babel-standalone/babel.min.js"></script>
+    <script src="../node_modules/react/umd/react.development.js"></script>
+    <script src="../node_modules/react-dom/umd/react-dom.development.js"></script>
+    <script src="./data.js"></script>
+    <script type='text/babel'>
+        let app = document.getElementById('app')
+        let styles = {
+            title:{
+                background:'skyblue',
+                fontSize:'20px'
+            },
+            persons:{
+                background:'hotpink',
+                fontSize:'16px'
+            },
+            person:{
+                borderBottom:'2px solid red'
+            }
+
+        }
+        class App extends React.Component {
+            state = {
+                arr : [false,true,true]
+            }
+            getData(){
+                return dataList
+            }
+            handleClick(index){
+                const arr = this.state.arr
+                arr[index] = !arr[index]                
+                this.setState({
+                    arr
+                })
+            }
+            render(){
+                const data = this.getData();
+                return (
+                    <div>
+                        {
+                           Object.keys(data).map((item,index)=>{
+                               console.log(item)
+                               return (
+                                   <div key={index}>
+                                        <h2 style = {styles.title} onClick ={this.handleClick.bind(this,index)}>{data[item].name}</h2>
+                                        {
+                                            this.state.arr[index] && (
+                                                <ol style= {styles.persons}>
+                                                {
+                                                    data[item].list.map((val,index)=>{
+                                                        return (
+                                                            <div key={index}>
+                                                                <li style = {styles.person}>
+                                                                    <p><strong>{val.name}&nbsp;&nbsp;</strong></p>
+                                                                    <p>{val.gender}&nbsp;&nbsp;</p>
+                                                                    <p>{val.introduce}</p>
+                                                                </li>
+                                                            </div>
+                                                        )
+                                                    })
+                                                }
+                                            </ol>
+                                            )
+                                        }    
+                                        
+                                    </div>
+                               )
+                           })
+                        }
+                    </div>
+                    )
+            }
+        }
+
+        ReactDOM.render(<App/>,app)
+    </script>
+</body>
+
+</html>

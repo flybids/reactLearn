@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app"></div>
+    <script src="../node_modules/babel-standalone/babel.min.js"></script>
+    <script src="../node_modules/react/umd/react.development.js"></script>
+    <script src="../node_modules/react-dom/umd/react-dom.development.js"></script>
+    <script type='module'>
+        import {dataList} from './data2.js'
+        window.dataList = dataList
+    </script>
+
+    <script type='text/babel'>
+        let app = document.getElementById('app')
+        let styles = {
+            title:{
+                background:'skyblue',
+                fontSize:'20px'
+            },
+            persons:{
+                background:'hotpink',
+                fontSize:'16px'
+            },
+            person:{
+                borderBottom:'2px solid red'
+            }
+
+        }
+        class Person extends React.Component{
+            render(){
+                return (
+                        <li>
+                            <p>{this.props.name}</p>
+                            <p>{this.props.gender}</p> 
+                            <p>{this.props.introduce}</p>  
+                        </li>
+                )
+            }
+        }
+        class Body extends React.Component{
+            state = {
+                arr : [false,true,true]
+            }
+            handleClick(index){
+                const arr = this.state.arr
+                arr[index] = !arr[index]                
+                this.setState({
+                    arr
+                })
+            }
+            render(){
+                console.log('====================================');
+                console.log(this.props.index);
+                console.log('====================================');
+                return (
+                    <div>
+                                       <h2 style ={styles.title} onClick = {this.handleClick.bind(this,this.props.index)}>{this.props.name}</h2>
+                                    {
+                                        this.state.arr[this.props.index] && ( <ol style = {styles.persons}>
+                                        {
+                                            this.props.list.map((item,index)=>{
+                                                return (
+                                                    <Person
+                                                        key={index}
+                                                        {...item}
+                                                    />
+                                                )
+                                            })
+                                        }
+                                    </ol>)
+                                }
+                                  </div>
+                )
+            }
+        }
+        class App extends React.Component {
+            state = {
+                arr : [false,true,true]
+            }
+            getData(){
+                return dataList
+            }
+            
+            render(){
+                const data = this.getData();
+                return (
+                    <div>
+                       {
+                           Object.keys(data).map((item,index)=>{
+                               return (
+                                  <Body 
+                                   {...data[item]}
+                                   key ={index}
+                                  /> 
+                               )
+                           })
+                       }
+                    </div>
+                    )
+            }
+        }
+
+        ReactDOM.render(<App/>,app)
+    </script>
+</body>
+
+</html>

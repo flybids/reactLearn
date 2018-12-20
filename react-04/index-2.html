@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>操作dom节点</title>
+</head>
+<body>
+        <div id="app"></div>
+        <script src="../node_modules/babel-standalone/babel.min.js"></script>
+        <script src="../node_modules/react/umd/react.development.js"></script>
+        <script src="../node_modules/react-dom/umd/react-dom.development.js"></script>
+        <script type="text/babel">
+            let app = document.getElementById('app')
+            let styles = {
+                container:{
+                    color:'red'
+                },
+                subTitle:{
+                    background:'hotpink'
+                }
+            }
+            // let handleClick = (e)=>{
+            //     console.log('click event')
+            //     //1 by id get dom
+            //     document.getElementById('divs').style.color='skyblue'
+
+            //     //2 eventObj
+            //     let {target,keyCode} = e
+            //     //console.log(target)
+
+            //     //3 属性 ref
+
+                
+            // }
+            
+            class Ele extends React.Component{
+                handleClick(e){
+                    console.log('click event')
+                //1 by id get dom
+                let divs = document.getElementById('divs') 
+                divs.style.color='skyblue'
+
+                //2 eventObj
+                let {target,keyCode} = e
+                //console.log(target)
+
+                //3 属性 ref 官方推荐
+                //通过脚手架开发时 需要保证全局唯一性 获取真实的DOM
+                //ref 指向真实的DOM
+                console.log(this._div,this.refs)
+                //多数情况下，使用ref,而不是findDOMNode,因为render返回null时findDOMNode也会返回null
+                //4
+                ReactDOM.findDOMNode(divs).style.height='30px'
+
+                /*
+                 虚拟DOM只有插入了文档，才能变成真实的DOM
+                 偶尔，需要从组件中获取真实的DOM，可以用ref属性
+
+                */
+
+                }
+                render(){
+                    return (
+                <div>
+                    <h1 style = {styles.container}>Hello World</h1>
+                    <div 
+                        style={styles.subTitle} 
+                        id='divs' 
+                        ref={itemDiv=>this._div=itemDiv}
+                    >
+                    DIV</div>
+                    <input
+                        type='button'
+                        defaultValue='操作DOM'
+                        onClick = {this.handleClick.bind(this)}
+                        ref={'btn'}
+                    />
+                </div>
+            );
+                }
+            }
+
+            // let ele = (
+            //     <div>
+            //         <h1 style = {styles.container}>Hello World</h1>
+            //         <div style={styles.subTitle} id='divs' ref={'btn'}>DIV</div>
+            //         <input
+            //             type='button'
+            //             defaultValue='操作DOM'
+            //             onClick = {handleClick}
+            //         />
+            //     </div>
+            // )
+            ReactDOM.render(<Ele/>,app)
+        </script>    
+</body>
+</html>
