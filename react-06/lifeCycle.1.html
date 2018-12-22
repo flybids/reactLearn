@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>生命周期函数</title>
+</head>
+<body>
+    <div id="app"></div>
+    <script src="../node_modules/babel-standalone/babel.min.js"></script>
+    <script src="../node_modules/react/umd/react.development.js"></script>
+    <script src="../node_modules/react-dom/umd/react-dom.development.js"></script>
+    <script type='text/babel'>
+        class List extends React.Component{
+            constructor(props){
+                super(props)
+                this.state={
+                    list:'这是LIST',
+                    name: props.title
+                }
+                console.log('子组件 constructor')
+                
+            }
+            componentWillReceiveProps(nextProps){
+                console.log('父组件更新了',nextProps)
+                this.setState({
+                    name:nextProps.title
+                })
+            }
+            shouldComponentUpdate(nextProps,nextState){
+                console.log('是否更新子组件')
+                return true //默认false
+            }
+            componentWillUpdate(nextProps,nextState){
+                console.log('即将更新子组件')
+            }
+            componentDidUpdate(){
+                console.log('子组件更新结束')
+            }
+            componentWillUnmount(){
+                console.log('我子组件，要销毁了')
+            }
+            render(){
+                console.log('渲染子组件')
+                return (
+                    <div>
+                      <h2>this is list</h2>
+                      {
+                        // 通常情况下，不会这样写，对应的数据会放在state里面
+                        //  <p>{this.props.title}</p>
+                       }
+                       <p>{this.state.name}</p>
+                    </div>
+                )
+            }
+        }
+        class App extends React.Component{
+            constructor(props){
+                super(props),
+                this.state = {
+                    onOff:true
+                }
+                console.log('父组件 constructor')
+
+            }
+            componentWillMount(){
+                console.log('父组件 加载前,自动执行');
+            }
+            componentDidMount(){
+                console.log('父组件 加载结束，自动执行');
+                
+            }
+            handleClick=()=>{
+                this.setState({
+                    name:'Tom',
+                    age:21,
+                    
+                })
+                
+            }
+            destory = () =>{
+                this.setState({
+                    onOff:!this.state.onOff
+                })
+            }
+            render(){
+                console.log('父组件 加载组件')
+                return (
+                    <div>
+                     <h1>App</h1>
+                     <button onClick={this.handleClick}>点击</button>
+                     <button onClick={this.destory}>销毁/生成子组件</button>
+                     {this.state.onOff && <List title={this.state.name}/>}
+                    </div>
+                )
+            }
+        }
+        ReactDOM.render(
+            <App/>,
+            document.querySelector('#app')
+        )
+    
+    </script>
+</body>
+</html>

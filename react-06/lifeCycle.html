@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>生命周期函数-加载</title>
+</head>
+<body>
+    <div id="app"></div>
+    <script src="../node_modules/babel-standalone/babel.min.js"></script>
+    <script src="../node_modules/react/umd/react.development.js"></script>
+    <script src="../node_modules/react-dom/umd/react-dom.development.js"></script>
+    <script type='text/babel'>
+        class App extends React.Component{
+            constructor(props){
+                super(props),
+                this.state = {
+                    name:'Tom',
+                    pwd:'123',
+                    age:props.age
+                }
+                console.log('创建组件')
+
+            }
+            //加载前
+            componentWillMount(){
+                console.log('加载前,自动执行');
+                //此时无法执行dom操作
+                //可以请求后端接口，真实开发环境不会在这里请求数据，因为可能会出现白屏
+                //异步执行
+                // this.state this.props this.setState 都是异步的
+                this.setState({
+                    name:'Alex'
+                })
+            }
+            //加载后，自动执行
+            componentDidMount(){
+                //通常请求数据会在这一步进行
+                this.setState({
+                    name:'componentDidMount'
+                })
+                console.log('加载结束，自动执行');
+            }
+            render(){
+                console.log('加载组件')
+                return (
+                    <div>
+                     <h1>{this.state.name},{this.state.age}</h1>
+                    </div>
+                )
+            }
+        }
+        ReactDOM.render(
+            <App  age={'21'}/>,
+            document.querySelector('#app')
+        )
+    
+    </script>
+</body>
+</html>
