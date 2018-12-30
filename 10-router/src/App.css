@@ -34,4 +34,44 @@
   color:red;
   background:skyblue;
   font-size: 20px;
+  font-weight: bolder;
+  
+}
+.Top{
+  height: 35px;
+  line-height: 35px;
+  border:1px solid hotpink;
+  display: flex;
+  justify-content: space-around;
+}
+a{
+  text-decoration: none;
+}
+.Content{
+  text-align: center;
+}
+.news{
+  height: 90vh;
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+.newsDetails,.newsTitle{
+  height: calc( 100% - 50px );
+  border:1px solid hotpink;
+  border-radius: 10px;
+  text-align: left;
+}
+.newsTitle{
+  width: 200px;
+  
+}
+.newsDetails{
+  width: calc( 100% - 250px );
+}
+.newsTitle ul{
+  list-style: none;
+}
+.newsTitle ul li{
+  margin-bottom: 5px;
 }
