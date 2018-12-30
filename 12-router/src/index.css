@@ -1,0 +1,85 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+.title{
+  padding-left: 20px;
+  background: #ddd;
+  margin: 0 auto;
+  height: 10vh;
+  line-height: 10vh;
+  font-size: 30px;
+  font-weight: bolder;
+  text-align: center;
+}
+.head{
+  height: 5vh;
+  background: #eee;
+  display: flex;
+  justify-content: space-around;
+  line-height: 5vh;
+}
+a{
+  text-decoration: none;
+}
+.head a{
+  width: 60px;
+  font-size: 20px;
+}
+.title i{
+  color:skyblue;
+  font-size: 50px
+}
+.checked{
+  color:hotpink;
+  font-weight: bolder;
+}
+.body{
+  height: 100vh;
+  background: #fef;
+  position: relative;
+}
+.con{
+  margin: 0;
+  width: 100vw;
+  height:calc( 100% - 15vh );
+  position: absolute;
+  top:15vh;
+  left:0;
+}
+
+.news{
+  display: flex;
+  justify-content: space-around;
+  height: 100%;
+}
+.news .menu{
+  width:25vw;
+  padding: 2px;
+  background: #dee;
+}
+.news .detail{
+  width:75vw;
+  padding: 2px;
+  background: #eff;
+}
+.news ul{
+  padding: 5px; 
+  list-style: none;
+}
+.news ul li{
+  height: 30px;
+  text-align: center;
+  line-height: 30px;
+  background: #efe;
+}
