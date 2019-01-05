@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="theme-color" content="#000000" />
+  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+  <title>React App</title>
+</head>
+
+<body>
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <div id="root"></div>
+  <script>
+    //命令模式
+    const team = {
+      cavalry(num){
+        console.log('骑兵数：'+num)
+      },
+      artillery(num){
+        console.log("大炮数："+num)
+      },
+      colonel(params){
+        let {type,num} = params
+        type==="cavalry"?this.cavalry(num):this.artillery(num)
+      }
+    }
+    //下命令
+    team.colonel({
+      type:'cavalry',
+      num:1000
+    })
+    team.colonel({
+      type:"artillery",
+      num:50
+    })
+
+  </script>
+</body>
+
+</html>
