@@ -14,7 +14,7 @@ export function reducer(state = 100, action) {
         default:
             return state;
     }
-}
+} 
 
 export function addNum(){
     return {

@@ -3,8 +3,14 @@
 ### 安装redux
 > yarn add redux
 ### 使用
-* 引入redux
+* 引入redux 
 > import  from 'redux'
 
 ### 配置装饰器
 > npm run eject
+```js
+"plugins":[
+    ["@babel/plugin-proposal-decorators",{"legacy":true}]
+]
+```
+改进代码

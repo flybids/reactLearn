@@ -27,10 +27,9 @@ export function removeNum(){
     }
 }
 
-export function removeNumAsync(){
-    //异步
-    //可以返回一个函数
-    //an
+//异步
+//返回一个函数
+export function removeNumAsync(){ 
    return (dispatch)=> {
        setTimeout(()=>{
         dispatch(removeNum())
