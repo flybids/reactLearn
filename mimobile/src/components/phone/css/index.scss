@@ -1,0 +1,46 @@
+.goods {
+
+    ul {
+        margin: .16rem 0;
+        padding: 0;
+        padding: 0;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        
+        li {
+            width: 3.7rem;
+            height: 5.3rem;
+            margin-bottom: .16rem;
+            a{
+                display: block;
+            }
+            .goods_shop {
+                height: 3.75rem;
+                
+                img {
+                    height: 100%;
+                    width: 100%;
+                }
+            }
+
+            .goods_info {
+                padding: .2rem .27rem;
+                text-align: left;
+
+                .goods_title {
+                    font-size: .28rem;
+                    color: rgba(0, 0, 0, 0.54);
+                }
+
+                .goods_brief {
+                    margin-top: .06rem;
+                    font-size: .22rem;
+                    line-height: .3rem;
+                    color: rgba(0, 0, 0, .54);
+                }
+            }
+
+        }
+    }
+}

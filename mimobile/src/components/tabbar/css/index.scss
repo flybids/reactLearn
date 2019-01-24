@@ -1,0 +1,44 @@
+.tabbar{
+    //position: sticky;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 99;
+    box-shadow: 0 3px 14px 2px rgba(0,0,0,.12);
+    ul{
+        height: 1.2rem;
+        background: #eee;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        .active{
+            background: #cdb;
+            color: #ff6700 !important;
+        }
+        li{
+            flex: 1;
+            a{
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                color: inherit;
+                i{
+                    font-size: 20px;
+                    width: .4rem;
+                    height: .4rem;
+                    display: block;
+                    em{
+                        color: red;
+                        font-size: .4rem;
+                    }
+                }
+                span{
+                    font-size: .32rem;
+                }
+            }
+        }
+    }
+}

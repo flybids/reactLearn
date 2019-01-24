@@ -1,0 +1,96 @@
+.mb {
+    margin-bottom: 1.3rem;
+
+    .shopdedatils {
+        padding: .22rem;
+        position: relative;
+        text-align: left;
+        background: white;
+
+        img {
+            display: block;
+            margin: auto;
+        }
+
+        .title {
+            font-size: .38rem;
+            margin: 0;
+            padding: 0;
+            margin-top: .2rem;
+        }
+        .des{
+            font-size: .20rem;
+            margin: 0;
+            padding: 0;
+            color: #878787;
+        }
+
+        .money {
+            color: red;
+            margin: 0;
+            padding: 0;
+            .symbol {
+                font-size: .22rem;
+            }
+
+            .price {
+                font-size: .32rem;
+            }
+        }
+
+        .courier {
+            font-size: .25rem;
+            color: #999;
+        }
+
+        .buyNum {
+            border: 1px solid #e7e7e7;
+            border-left: none;
+            border-right: none;
+
+            padding: .2rem;
+
+            .buyfont {
+                font-size: .4rem;
+            }
+
+            .addNum {
+                font-size: .4rem;
+
+                a {
+                    width: .6rem;
+                    height: .6rem;
+                    background: #f1f1f1;
+                    display: inline-block;
+                    color: #878787;
+                    text-align: center;
+                }
+
+                a:active {
+                    background: #ddd;
+                }
+            }
+        }
+
+        .buy {
+            display: flex;
+            height: .96rem;
+            text-align: center;
+            line-height: .96rem;
+
+            a {
+                flex: 1;
+                color: white;
+                font-size: .31rem;
+            }
+
+            .addCart {
+                background: #ff9402;
+            }
+
+            .nowBuy {
+                background: #ff5000;
+            }
+        }
+    }
+}

@@ -1,0 +1,1 @@
+> cnpm i react-lazyload -S

@@ -1,0 +1,14 @@
+.nav{
+    height: 3.15rem;
+    background:#ddd;
+    display: flex;
+    flex-wrap: wrap;
+    a{
+        width: 20%;
+        height: 1.62rem;
+        img{
+            height: 100%;
+            width: 100%;
+        }
+    }
+}
